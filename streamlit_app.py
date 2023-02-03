@@ -2,6 +2,7 @@ import streamlit
 import pandas
 import requests
 import snowflake.connector
+from urllib.error import URLError
 
 
 streamlit.title('My Parents New Healthy Diner')
@@ -32,8 +33,8 @@ try:
   else:
     back_from_fuction = get_fruityvice_data(fruit_choice)
     streamlit.dataframe(back_from_function)
-
-
+except URLError as e:
+  streamlit.text(e)
 
 
 
